@@ -1,0 +1,94 @@
+dtmc
+
+module Agent
+
+	Agent: [0..35] init 0;
+
+	[] Agent=0 -> 0.500552968 : (Agent'=1) + 0.499447032 : (Agent'=6); // stay thinking
+	[] Agent=1 -> 0.485445484: (Agent'=2) + 0.072682293 : (Agent'=7) + 0.441872224 : (Agent'=0); // trying
+	[] Agent=2 -> 0.497963539: (Agent'=3) + 0.075553579 : (Agent'=8) + 0.426482881 : (Agent'=1);  // draw randomly
+	[] Agent=3 -> 0.520179158: (Agent'=4) + 0.019509707 : (Agent'=9) + 0.460311135 : (Agent'=2); // pick up left
+	[] Agent=4 -> 0.625718555: (Agent'=5) + 0.174499312 : (Agent'=10) + 0.199782133 : (Agent'=3); // left not free
+	[] Agent=5 -> 0.473751919: (Agent'=11) + 0.526248081 : (Agent'=4) ; // pick up right
+	[] Agent=6 -> 0.567934739: (Agent'=0) + 0.055342864 : (Agent'=7) + 0.376722397 : (Agent'=12);// right not free
+	[] Agent=7 -> 0.122013584: (Agent'=1) + 0.276628046 : (Agent'=8) + 0.317538953 : (Agent'=13) + 0.283819417 : (Agent'=6);// pick up right (got left)
+	[] Agent=8 -> 0.039407609: (Agent'=2) + 0.408375181 : (Agent'=9) + 0.251085199 : (Agent'=14) + 0.301132011 : (Agent'=7);// right not free (got left)
+	[] Agent=9 -> 0.44772513: (Agent'=3) + 0.282001414 : (Agent'=10) + 0.059582744 : (Agent'=15) + 0.210690712 : (Agent'=8); // pick up left (got right)
+	[] Agent=10 -> 0.44140345: (Agent'=4) + 0.0502467 : (Agent'=11) + 0.470733353 : (Agent'=16) + 0.037616497 : (Agent'=9);  // left not free (got right)
+	[] Agent=11  -> 0.384051452: (Agent'=5) + 0.580520838 : (Agent'=17) + 0.03542771 : (Agent'=10); // put down left
+	[] Agent=12  -> 0.469979092: (Agent'=6) + 0.005498757 : (Agent'=13) + 0.524522151 : (Agent'=18);// put down right
+	[] Agent=13  -> 0.17721519: (Agent'=7) + 0.034723029 : (Agent'=14) + 0.463593079 : (Agent'=19) + 0.324468703 : (Agent'=12); // move to eating (got forks)
+	[] Agent=14 -> 0.07159389: (Agent'=8) + 0.043666101 : (Agent'=15) + 0.455485265 : (Agent'=20) + 0.429254745 : (Agent'=13);// finished eating and put down left 
+	[] Agent=15  -> 0.653151558: (Agent'=9) + 0.023725212 : (Agent'=16) + 0.077638102 : (Agent'=21) + 0.245485127 : (Agent'=14); // finished eating and put down right
+	[] Agent=16 -> 0.59787218: (Agent'=10) + 0.002940123 : (Agent'=17) + 0.373131797 : (Agent'=22) + 0.0260559 : (Agent'=15); // put down right and return to think
+	[] Agent=17 -> 0.303995518: (Agent'=11) + 0.655311415 : (Agent'=23) + 0.040693067 : (Agent'=16); // put down left and return to think
+	[] Agent=18 -> 0.52966011: (Agent'=12) + 0.004512497 : (Agent'=19) + 0.465827393 : (Agent'=24);
+	[] Agent=19 -> 0.17430667: (Agent'=13) + 0.032431813 : (Agent'=20) + 0.458056383 : (Agent'=25) + 0.335205134 : (Agent'=18);
+	[] Agent=20 -> 0.068970699: (Agent'=14) + 0.043275733 : (Agent'=21) + 0.43906837 : (Agent'=26) + 0.448685199 : (Agent'=19);
+	[] Agent=21 -> 0.6455843: (Agent'=15) + 0.019357716 : (Agent'=22) + 0.070205174 : (Agent'=27) + 0.26485281 : (Agent'=20);
+	[] Agent=22 -> 0.095171156: (Agent'=16) + 0.718365365 : (Agent'=23) + 0.181767362 : (Agent'=28) + 0.004696117 : (Agent'=21); 
+	[] Agent=23 -> 0.051054749: (Agent'=17) + 0.009092387 : (Agent'=29) + 0.939852863 : (Agent'=22);
+	[] Agent=24 -> 0.301776782: (Agent'=18) + 0.042619102 : (Agent'=25) + 0.655604116 : (Agent'=30); 
+	[] Agent=25 -> 0.039405527: (Agent'=19) + 0.139614352 : (Agent'=26) + 0.106310851 : (Agent'=31) + 0.71466927 : (Agent'=24); 
+	[] Agent=26 -> 0.013467511: (Agent'=20) + 0.097378165 : (Agent'=27) + 0.089763497 : (Agent'=32) + 0.799390827 : (Agent'=25);
+	[] Agent=27 -> 0.005830017: (Agent'=21) + 0.312635904 : (Agent'=28) + 0.663585558 : (Agent'=33) + 0.01794852 : (Agent'=26); 
+	[] Agent=28 -> 0.075263134: (Agent'=22) + 0.307855463 : (Agent'=29) + 0.349857934 : (Agent'=34) + 0.267023469 : (Agent'=27); 
+	[] Agent=29 -> 0.009853833: (Agent'=23) + 0.039764821 : (Agent'=35) + 0.950381346 : (Agent'=28); 
+	[] Agent=30 -> 0.516368272 : (Agent'=24) + 0.483631728 : (Agent'=31); 
+	[] Agent=31 ->  0.02731388: (Agent'=25) + 0.669251239 : (Agent'=32) + 0.303434881 : (Agent'=30);  
+	[] Agent=32 -> 0.048235923: (Agent'=26) + 0.666782202 : (Agent'=33) + 0.284981875 : (Agent'=31);  
+	[] Agent=33 -> 0.959508902: (Agent'=27) + 0.014743718 : (Agent'=34) + 0.025747381 : (Agent'=32); 
+	[] Agent=34 -> 0.955461803: (Agent'=28) + 0.025024576 : (Agent'=35) + 0.019513621 : (Agent'=33); 
+	[] Agent=35 -> (Agent'=0);   
+endmodule
+
+
+module Adversary
+
+	Learning_Adversary: [0..35] init 0;
+
+	
+	[] Learning_Adversary=0 -> 0.395676788 : (Learning_Adversary'=1) + 0.604323212 : (Learning_Adversary'=6); // stay thinking
+	[] Learning_Adversary=1 -> 0.107810107: (Learning_Adversary'=2) + 0.000459418 : (Learning_Adversary'=7) + 0.891730475 : (Learning_Adversary'=0); // trying
+	[] Learning_Adversary=2 -> 0.516587678: (Learning_Adversary'=3) + 0.045023697 : (Learning_Adversary'=8) + 0.438388626 : (Learning_Adversary'=1);  // draw randomly
+	[] Learning_Adversary=3 -> 0.708975521: (Learning_Adversary'=4) + 0.029011786 : (Learning_Adversary'=9) + 0.262012693 : (Learning_Adversary'=2); // pick up left
+	[] Learning_Adversary=4 -> 0.889697521: (Learning_Adversary'=5) + 0.005458267 : (Learning_Adversary'=10) + 0.104844212 : (Learning_Adversary'=3); // left not free
+	[] Learning_Adversary=5 -> 0.106676788: (Learning_Adversary'=11) + 0.893323212 : (Learning_Adversary'=4) ; // pick up right
+	[] Learning_Adversary=6 -> 0.96486552: (Learning_Adversary'=0) + 0.001938454: (Learning_Adversary'=7) + 0.033196026 : (Learning_Adversary'=12);// right not free
+	[] Learning_Adversary=7 -> 0.522105263: (Learning_Adversary'=1) + 0.477894737 : (Learning_Adversary'=6);// pick up right (got left)
+	[] Learning_Adversary=8 -> 0.96969697: (Learning_Adversary'=2) + 0.011363636 : (Learning_Adversary'=9) + 0.018939394 : (Learning_Adversary'=14);// right not free (got left)
+	[] Learning_Adversary=9 -> 0.75698324: (Learning_Adversary'=3) + 0.223463687 : (Learning_Adversary'=10) + 0.019553073 : (Learning_Adversary'=15) ; // pick up left (got right)
+	[] Learning_Adversary=10 -> 0.447939743: (Learning_Adversary'=4) + 0.394771821 : (Learning_Adversary'=11) + 0.060700044 : (Learning_Adversary'=16) + 0.096588392 : (Learning_Adversary'=9);  // left not free (got right)
+	[] Learning_Adversary=11  -> 0.988507204: (Learning_Adversary'=5) + 0.001605611 : (Learning_Adversary'=17) + 0.009887185 : (Learning_Adversary'=10); // put down left
+	[] Learning_Adversary=12  -> 0.548469388: (Learning_Adversary'=6) + 0.005102041 : (Learning_Adversary'=13) + 0.446428571 : (Learning_Adversary'=18);// put down right
+	[] Learning_Adversary=13  ->  0.00621118 : (Learning_Adversary'=14) + 0.01863354 : (Learning_Adversary'=19) + 0.97515528 : (Learning_Adversary'=12); // move to eating (got forks)
+	
+	[] Learning_Adversary=15  -> (Learning_Adversary'=16) ; // finished eating and put down right
+	[] Learning_Adversary=16 ->  0.19 :(Learning_Adversary'=17) + 0.8: (Learning_Adversary'=22) + 0.01: (Learning_Adversary'=15); // put down right and return to think
+	[] Learning_Adversary=17 -> 0.422100811: (Learning_Adversary'=11) + 0.560979908 : (Learning_Adversary'=23) + 0.016919281 : (Learning_Adversary'=16); // put down left and return to think
+	[] Learning_Adversary=18 -> 0.418705036: (Learning_Adversary'=12) + 0.018705036 : (Learning_Adversary'=19) + 0.562589928 : (Learning_Adversary'=24);
+	[] Learning_Adversary=19 -> 0.002915452 : (Learning_Adversary'=20) + 0.521865889 : (Learning_Adversary'=25) + 0.475218659 : (Learning_Adversary'=18);
+	[] Learning_Adversary=20 ->  0.004926108 : (Learning_Adversary'=21) + 0.985221675 : (Learning_Adversary'=26) + 0.009852217 : (Learning_Adversary'=19);
+	[] Learning_Adversary=21 -> 0.000647406: (Learning_Adversary'=15) + 0.268673626 : (Learning_Adversary'=22) + 0.730678967 : (Learning_Adversary'=27) ;
+	[] Learning_Adversary=22 -> 0.003902439: (Learning_Adversary'=16) + 0.151219512 : (Learning_Adversary'=23) + 0.844313222 : (Learning_Adversary'=28) + 0.000564827 : (Learning_Adversary'=21); 
+	[] Learning_Adversary=23 -> 0.303574133: (Learning_Adversary'=17) + 0.560124186 : (Learning_Adversary'=29) + 0.136301681 : (Learning_Adversary'=22);
+	[] Learning_Adversary=24 -> 0.081983471: (Learning_Adversary'=18) + 0.006280992 : (Learning_Adversary'=25) + 0.911735537 : (Learning_Adversary'=30); 
+	[] Learning_Adversary=25 -> 0.023721275: (Learning_Adversary'=19) + 0.128984433 : (Learning_Adversary'=26) + 0.38176427 : (Learning_Adversary'=31) + 0.465530022 : (Learning_Adversary'=24); 
+	[] Learning_Adversary=26 -> 0.00054772: (Learning_Adversary'=20) + 0.911953992 : (Learning_Adversary'=27) + 0.087224428 : (Learning_Adversary'=32) + 0.00027386 : (Learning_Adversary'=25);
+	[] Learning_Adversary=27 -> 0.001204946: (Learning_Adversary'=21) + 0.933675608 : (Learning_Adversary'=28) + 0.056056161 : (Learning_Adversary'=33) + 0.009063286 : (Learning_Adversary'=26); 
+	[] Learning_Adversary=28 -> 0.356651569: (Learning_Adversary'=22) + 0.007632947 : (Learning_Adversary'=29) + 0.006794162 : (Learning_Adversary'=34) + 0.628921322 : (Learning_Adversary'=27); 
+	[] Learning_Adversary=29 -> 0.511840689: (Learning_Adversary'=23) + 0.151686401 : (Learning_Adversary'=35) + 0.33647291 : (Learning_Adversary'=28); 
+	[] Learning_Adversary=30 -> 0.840229796 : (Learning_Adversary'=24) + 0.159770204 : (Learning_Adversary'=31); 
+	[] Learning_Adversary=31 ->  0.022564952: (Learning_Adversary'=25) + 0.00300176 : (Learning_Adversary'=32) + 0.974433288 : (Learning_Adversary'=30);  
+	[] Learning_Adversary=32 -> 0.029895025: (Learning_Adversary'=26) + 0.728206298 : (Learning_Adversary'=33) + 0.241898676 : (Learning_Adversary'=31);  
+	[] Learning_Adversary=33 -> 0.26596419: (Learning_Adversary'=27) + 0.645539534 : (Learning_Adversary'=34) + 0.088496276 : (Learning_Adversary'=32); 
+	[] Learning_Adversary=34 -> 0.205636085: (Learning_Adversary'=28) + 0.02773026 : (Learning_Adversary'=35) + 0.766633654 : (Learning_Adversary'=33); 
+	[] Learning_Adversary=35 -> (Learning_Adversary'=0); 
+
+endmodule
+
+
+
+
+
+
