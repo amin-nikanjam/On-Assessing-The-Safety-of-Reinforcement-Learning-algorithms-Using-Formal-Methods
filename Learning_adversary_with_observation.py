@@ -240,20 +240,6 @@ class Agent:
 
 
 
-    def display_greedy_policy(self):
-        # greedy policy = argmax[a'] Q[s,a']
-        greedy_policy = np.zeros((self.state_dim[0], self.state_dim[1]), dtype=int)
-        greedy_policyA = np.zeros((self.state_dim[0], self.state_dim[1]), dtype=int)
-        for x in range(self.state_dim[0]):
-            for y in range(self.state_dim[1]):
-                greedy_policy[y, x] = np.argmax(self.Q[y, x, :])
-        for x in range(self.state_dim[0]):
-            for y in range(self.state_dim[1]):
-                greedy_policyA[y, x] = np.argmax(self.QA[y, x, :])
-
-        print(greedy_policy)
-        print('attacker')
-        print(greedy_policyA)
 
 
 
