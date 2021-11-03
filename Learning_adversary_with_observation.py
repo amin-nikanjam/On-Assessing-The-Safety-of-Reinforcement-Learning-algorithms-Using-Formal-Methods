@@ -265,12 +265,7 @@ class Learn:
                            (5, 0): 30, (5, 1): 31, (5, 2): 32, (5, 3): 33, (5, 4): 34, (5, 5): 35,
                            }
 
-        # Train agent
-        print("\nTraining agent...\n")
 
-        #df = pd.DataFrame(list())
-        #df.to_csv('statProb.csv')
-        #List = ['episode Number', 'ProbCollision', 'observation', 'adversaryPosition','collision per episode']
         List = ['episode Number', 'collision per episode']
 
         # Open our existing CSV file in append mode
@@ -283,18 +278,7 @@ class Learn:
 
             # writing data row-wise into the csv file
             writer.writeheader()
-        #with open('statProb.csv', 'a+') as f_object1:
 
-            # Pass this file object to csv.writer()
-            # and get a writer object
-            #writer_object1 = writer(f_object1)
-
-            # Pass the list as an argument into
-            # the writerow()
-            #writer_object1.writerow(List)
-
-            # Close the file object
-            #f_object1.close()
         N_episodes = 2000
         A = []
         E = []
@@ -460,9 +444,6 @@ class Learn:
                 if done:
 
                     break
-                #if state_nextA == state_next:
-
-                    # env.state=(0,0)
 
 
 
@@ -470,7 +451,7 @@ class Learn:
 
 
             Lst= [episode,reward_episode, int(j), reward_episodeA]
-            #nbColl.append(j)
+
 
             file = open('statProb10.csv', 'a+', newline='')
 
