@@ -1,34 +1,4 @@
-"""
 
- gridworld.py  (author: Anson Wong / git: ankonzoid)
-
- We use Q-learning to train an epsilon-greedy agent to find the shortest path
- between position (0, 0) to opposing corner (Ny-1, Nx-1) of a 2D rectangular grid
- in the 2D GridWorld environment of size (Ny, Nx).
-
- Note:
- The optimal policy exists but is a highly degenerate solution because
- of the multitude of ways one can traverse down the grid in the minimum
- number of steps. Therefore a greedy policy that always moves the agent closer
- towards the goal can be considered an optimal policy (can get to the goal
- in `Ny + Nx - 2` actions). In our example, this corresponds to actions
- of moving right or down to the bottom-right corner.
-
- Example optimal policy:
-
-  [[1 1 1 1 1 2]
-  [1 1 1 1 1 2]
-  [1 1 1 1 1 2]
-  [1 1 1 1 1 2]
-  [1 1 1 1 1 2]
-  [1 1 1 1 1 0]]
-
-  action['up'] = 0
-  action['right'] = 1
-  action['down'] = 2
-  action['left'] = 3
-
-"""
 import math
 import os, sys, random, operator
 import numpy as np
@@ -45,8 +15,7 @@ from pysmt.shortcuts import Symbol, And, Not, is_sat, GE, Int, TRUE, Equals, Or,
 
 class Environment:
 
-    #state=(0,0)
-    #stateA=(0,0)
+
     def __init__(self, Ny=6, Nx=6):
         # Define state space
         self.Ny = Ny  # y grid size
@@ -278,12 +247,7 @@ class Learn:
                                    (5, 0): 30, (5, 1): 31, (5, 2): 32, (5, 3): 33, (5, 4): 34, (5, 5): 35,
                                    }
 
-                # Train agent
 
-
-                #df = pd.DataFrame(list())
-                #df.to_csv('statProb.csv')
-                #List = ['episode Number', 'ProbCollision', 'observation', 'adversaryPosition','collision per episode']
 
 
                 # Open our existing CSV file in append mode
@@ -296,18 +260,7 @@ class Learn:
 
                     # writing data row-wise into the csv file
                     writer.writeheader()
-                #with open('statProb.csv', 'a+') as f_object1:
 
-                    # Pass this file object to csv.writer()
-                    # and get a writer object
-                    #writer_object1 = writer(f_object1)
-
-                    # Pass the list as an argument into
-                    # the writerow()
-                    #writer_object1.writerow(List)
-
-                    # Close the file object
-                    #f_object1.close()
                 N_episodes = 2100
                 A = []
                 E = []
@@ -348,8 +301,7 @@ class Learn:
                     iter_episode, reward_episode = 0, 0
                     reward_episodeA = 0
                     state = env.reset()  # starting state
-                    #state = env.state
-                    #stateA = env.state
+
                     env.R = env._build_rewards()
                     stateA = env.resetA()
 
