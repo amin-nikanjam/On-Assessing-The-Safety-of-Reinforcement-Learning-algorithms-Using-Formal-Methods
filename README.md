@@ -1,3 +1,8 @@
 # On-Assessing-The-Safety-of-Reinforcement-Learning-algorithms-Using-Formal-Methods
-This code contain files that we use to implement our techniques regarding the behavior of an RL agent when facing moving adversaries. Additional informations regarding our techniques can be found in our paper. The link to proceedings will be made available soon.
-Each .py files represent a scenario of the environment and the .dtmc is our code for probabilistic model checking
+This code contain files that we use to implement our techniques regarding the behavior of an RL agent when facing moving adversaries.
+
+# Implementation
+
+Each .py files is ready to run and implement a scenario of our environment.
+
+1. 
