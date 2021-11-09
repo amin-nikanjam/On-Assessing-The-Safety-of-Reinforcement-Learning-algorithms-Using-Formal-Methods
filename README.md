@@ -3,7 +3,9 @@ This code contain files that we use to implement our techniques regarding the be
 
 # Prerequisites
 Python 3.7
+
 numpy 1.16
+
 [Prism model checker] (https://www.prismmodelchecker.org/download.php)
 
 # Implementation
