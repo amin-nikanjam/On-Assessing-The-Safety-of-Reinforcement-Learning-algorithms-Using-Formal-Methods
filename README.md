@@ -22,3 +22,9 @@ Each .py files is ready to run and implement a scenario of our environment.
 
 # BIBTEX REFERENCE
 
+@misc{mindom2021assessing,
+      title={On Assessing The Safety of Reinforcement Learning algorithms Using Formal Methods}, 
+      author={Paulina Stevia Nouwou Mindom and Amin Nikanjam and Foutse Khomh and John Mullins},
+      year={2021},
+      note={arXiv preprint arXiv:2111.04865},
+}
